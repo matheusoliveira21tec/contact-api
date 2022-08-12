@@ -19,7 +19,8 @@ namespace contact_api.Services
 
         public async Task<List<People>> GetAsync() =>
             await _peopleCollection.Find(x => true).ToListAsync();
-       
+        public async Task<People> GetAsync(string id) =>
+            await _peopleCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         public async Task CreateAsync(People people) =>
             await _peopleCollection.InsertOneAsync(people);
         public async Task<People> UpdateAsync(string peopleId, People peopleUpdate)

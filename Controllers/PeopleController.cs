@@ -17,9 +17,11 @@ namespace contact_api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<People>> GetPeople()
-            => await _peopleServices.GetAsync();
-
+        public async Task<List<People>> GetProdutos()
+             => await _peopleServices.GetAsync();
+        [HttpGet("{id}")]
+        public async Task<People> GetProdutos(string id)
+             => await _peopleServices.GetAsync(id);
         [HttpDelete]
         public async Task<string> RemovePeople(string id)
         {
