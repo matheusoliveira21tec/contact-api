@@ -22,18 +22,18 @@ namespace contact_api.Controllers
         [HttpGet("{id}")]
         public async Task<People> GetProdutos(string id)
              => await _peopleServices.GetAsync(id);
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<string> RemovePeople(string id)
         {
             await _peopleServices.RemoveAsync(id);
             return id;
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<People> UpdatePeople(string id, People people)
         {
-            await _peopleServices.UpdateAsync(id, people);
-            return people;
+           People retorno= await _peopleServices.UpdateAsync(id, people);
+            return retorno;
         }
         [HttpPost]
         public async Task<People> PostPeople(People people)
